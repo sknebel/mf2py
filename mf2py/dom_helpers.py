@@ -175,6 +175,8 @@ def get_textContent(el, replace_img=False, img_to_src=True, base_url=''):
     for t in results:
         if t in (P_BREAK_BEFORE, P_BREAK_AFTER):
             count = max(t, count)
+        elif t == PRE_BEFORE:
+            text = text.rstrip(' ')
         elif not isinstance(t, int):
             if count or last == '\n':
                 t = re.sub(r'^ +', '', t)
